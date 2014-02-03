@@ -1,13 +1,24 @@
 ul {
 	width: 80%;
 	list-style-type: none;
+	list-style-position:inside;
+	padding:0;
+	margin: 0 auto;
 }
 
 li {
 	border: 1px solid gray;
-
+	overflow: hidden;
+	position: relative;
 }
 
 li:hover {
 	background: rgba(65,131,196,0.2);
+}
+
+.compare {
+	float: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
 }
