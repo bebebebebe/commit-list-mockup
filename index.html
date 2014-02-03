@@ -1,0 +1,28 @@
+<head>
+	<script src='jquery-min.js'></script>
+	<script type="text/javascript" src="handlebars.js"></script>
+	<script src='data.js'></script>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+
+<script id="revisions-template" type="text/x-handlebars-template">
+	<h1>Revisions since {{cutoff}}</h1>
+	<ul>
+		{{#each revision}}
+			<li commit='{{hash}}'>
+				<p>{{hash}}, {{date}}</p>
+				</p>number of tests: {{tests}}</p>
+				<div>
+					<div class='reg'><a> - </a></div>
+					<a href='{{fixUrl}}'>{{fixName}}</a>
+				</div>
+			</li>
+		{{/each}}
+	</ul>
+</script>
+
+
+
+</body>
