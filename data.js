@@ -6,8 +6,8 @@ $(document).ready(function(){
 
 	var rows = [{commitHash: '58sl384jd', timestamp: '3 January 2014', numtests: 1203},
 				{commitHash: 's9d8dks7e', timestamp: '12 January 2014', numtests: 2938},
-				{commitHash: 'sldf8293m', timestamp: '18 December 1013', numtests: 120392},
-				{commitHash: 'b39clskd9', timestamp: '15 December 1013', numtests: 130293}
+				{commitHash: 'sldf8293m', timestamp: '18 December 2013', numtests: 120392},
+				{commitHash: 'b39clskd9', timestamp: '15 December 2013', numtests: 130293}
 	];
 
 	var revisions = [];
@@ -16,9 +16,7 @@ $(document).ready(function(){
 		var revision = {hash: row.commitHash, date: row.timestamp, tests: row.numtests};
 		if (i+1 < rows.length) {
 			revision.regUrl = '/regressions/between/' + rows[i+1].commitHash + '/' + row.commitHash;
-			revision.regName = '-';
 			revision.fixUrl = '/fixes/between/' + rows[i+1].commitHash + '/' + row.commitHash;
-			revision.fixName = '+';
 		};
 		revisions.push(revision);
 	}
@@ -34,42 +32,42 @@ $(document).ready(function(){
 
 // "front end"
 
+	$('li').last().find('.compare').hide();
+
 	var selected = {hash: null, index: null};
 
 	$('li').on('click', function(){
 		var hash = $(this).attr('commit');
 		if (selected.hash === hash) {
 			selected = {hash: null, index: null};
-
+			$(this).find('.compare').show();
 			$(this).css('background', '');
+			$('li').last().find('.compare').hide();
 			$('li').each(function(){
+				$(this).find('span').text('next');
 				var nextHash = $(this).next().attr('commit');
 				var thisHash = $(this).attr('commit');
 				$(this).find('.reg').children('a').attr('href', '/regressions/between/' + nextHash + '/' + thisHash);
-			});
+				$(this).find('.fix').children('a').attr('href', '/fixes/between/' + nextHash + '/' + thisHash);			});
 		} else {
 			selected = {hash: hash, index: $(this).index()};
-
-			console.log(selected);
+			$('li').last().find('.compare').show();
 			$('li').each(function(){
 				var afterSelected = (selected.index > $(this).index());
 				var oldHash = afterSelected ? selected.hash : $(this).attr('commit');
 				var newHash = afterSelected ? $(this).attr('commit') : selected.hash;
 				$(this).find('.reg').children('a').attr('href', '/regressions/between/' + oldHash + '/' + newHash);
+				$(this).find('.fix').children('a').attr('href', '/fixes/between/' + oldHash + '/' + newHash);
 				$(this).css('background', '');
-				$(this).find('.reg').show();
+				$(this).find('.compare').show();
+				$(this).find('span').text('selected');
 			});
 			$(this).css('background', 'rgba(65,131,196,0.5)');
-			$(this).find('.reg').hide();
+			$(this).find('.compare').hide();
 		}
 	});
 
-	$('li').each(function(){
 
-		if (selected) {
-			$(this).find('.reg').children('a').attr('href', selected)
-		}
-	});
 
 });
 

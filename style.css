@@ -10,6 +10,7 @@ li {
 	border: 1px solid gray;
 	overflow: hidden;
 	position: relative;
+	cursor: pointer;
 }
 
 li:hover {
@@ -20,5 +21,15 @@ li:hover {
 	float: right;
 	position: absolute;
 	bottom: 0;
-	right: 0;
+	right: 5px;
+	/*padding: 5px;*/
+}
+
+.reg, .fix {
+	float: right;
+	padding: 5px;
+}
+
+p {
+	margin: 5px;
 }

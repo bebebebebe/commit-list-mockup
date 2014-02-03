@@ -12,12 +12,15 @@
 	<ul>
 		{{#each revision}}
 			<li commit='{{hash}}'>
-				<p>{{hash}}, {{date}}</p>
-				</p>number of tests: {{tests}}</p>
+				<p>
+					{{hash}}, {{date}}</br>
+					number of tests: {{tests}}
+				</p>
 				<div class='compare'>
-					compare with <span>next<span> revision
-					<div class='reg'><a href='{{regUrl}}'>reg</a></div>
-					<a href='{{fixUrl}}'>{{fixName}}</a>
+					compare with <span>next</span> revision</br>
+					<div class='reg'><a href='{{regUrl}}'>regressions</a></div>
+					<div class='fix'><a href='{{fixUrl}}'>fixes</a></div>
+
 				</div>
 			</li>
 		{{/each}}
