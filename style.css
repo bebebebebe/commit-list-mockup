@@ -1,35 +1,74 @@
+h1 {
+	font-family: sans-serif;
+	font-size: 20px;
+	padding-top: 10px;
+	padding-left: 10%;
+}
+
 ul {
 	width: 80%;
 	list-style-type: none;
 	list-style-position:inside;
 	padding:0;
 	margin: 0 auto;
+	border: 1px solid #e2eaee;
+	border-bottom: none;
+	font-family: Helvetica;
+	color: gray;
+	font-size: 14px;
 }
 
 li {
-	border: 1px solid gray;
+	border-bottom: 1px solid #e2eaee;
 	overflow: hidden;
 	position: relative;
 	cursor: pointer;
+	padding: 5px;
 }
 
 li:hover {
-	background: rgba(65,131,196,0.2);
+	background: rgba(65,131,196,0.1);
 }
 
 .compare {
 	float: right;
 	position: absolute;
-	bottom: 0;
-	right: 5px;
-	/*padding: 5px;*/
+	bottom: 2px;
+	right: 2px;
+	font-weight: lighter;
 }
 
-.reg, .fix {
+.compare span.hash {
+	color: rgba(65,131,196,1);
+}
+
+.compare-links {
 	float: right;
+}
+
+
+.timestamp {
+	color: black;
+	font-size: 16px;
+}
+
+.numtests {
+	padding: 3px;
+}
+
+.hash {
+	font-family: monospace;
 	padding: 5px;
 }
 
-p {
-	margin: 5px;
+a {
+	font-weight: bold;
+	text-decoration: none;
+	color: gray;
+	padding: 5px;
 }
+
+a:hover{
+	color: black;
+}
+
