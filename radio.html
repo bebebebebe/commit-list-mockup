@@ -1,0 +1,63 @@
+<head>
+	<script src='jquery-min.js'></script>
+	<script type="text/javascript" src="handlebars.js"></script>
+	<script src='radio.js'></script>
+	<link rel="stylesheet" type="text/css" href="radio.css"/>
+</head>
+
+<body>
+
+<script id="revisions-template" type="text/x-handlebars-template">
+<h1>{{heading}}</h1>
+
+<p>
+	Compare selected revisions:
+	<a id='compare-reg' href=''>Regressions</a>
+	<a id='compare-fix' href=''>Fixes</a>
+</p>
+
+<table>
+	<tbody>
+		<tr>
+			{{~#each header~}}
+				<th>{{~this~}}</th>
+			{{~/each~}}
+		</tr>
+		{{~#each row~}}
+			<tr>
+				{{~#each this~}}
+					<td>
+						{{~#if url~}}
+							<a href='{{~url~}}'><b>{{~name~}}</b></a>
+						{{~else~}}
+							{{~this~}}
+						{{~/if~}}
+					</td>
+				{{~/each~}}
+				<td>
+					<input type='radio' name='old' value='{{~this.hash~}}'>
+					<input type='radio' name='new' value='{{~this.hash~}}'>
+				</td>
+			</tr>
+		{{~/each~}}
+	</tbody>
+</table>
+
+
+
+</script>
+
+<script>
+
+// <form id='revisions'>
+// 	<input type="submit" value="Regressions" onclick="compare()" class="button" title="See regressions between the two selected revisions [ctrl-option-r]" accesskey="r">
+// 	<input type="submit" value="Fixes" class="button" title="See fixes between the two selected revisions [ctrl-option-f]" accesskey="f">
+	var compare = function(){
+		document.getElementById('revisions').action = action;
+		document.getElementById('revisions').submit();
+	};
+</script>
+
+
+
+</body>

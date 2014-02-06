@@ -1,0 +1,16 @@
+/* results table views */
+
+.results th {
+	padding: 0 10px;
+}
+
+.results td {
+	text-align: center;
+}
+
+.results td.title {
+	text-align: left;
+	padding-left: 0.4em;
+}
+
+/* added for mockup */
